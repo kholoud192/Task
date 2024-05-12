@@ -1,0 +1,39 @@
+<header>
+    <input #searchInput type="text" placeholder="Search by ID" (change)="searchUsers($event)" class="search">
+    <i class="fa-solid fa-magnifying-glass" (click)="focusSearchInput(searchInput)"></i>
+    <span class="links">
+        <a href="#" class="hvr">Home</a>
+        <a href="#" class="hvr">About</a>
+        <a href="#"class="hvr">Contact Us</a>
+    </span>
+</header>
+<div *ngIf="users.length > 0; else loadingUsers">
+    <div class="container" >
+        <div class="user-list">
+            <div *ngFor="let user of users">
+            <div class="user-card" (click)="navigateToUserDetails(user.id)">
+                <div class="image">
+                    <img [src]="user.avatar" alt="User Avatar">
+                </div>
+                <div class="user-details">
+                    <p><i class="fa-regular fa-id-badge"></i> {{user.id}}</p>
+                    <hr>
+                <p><i class="fa-regular fa-user"></i> {{ user.first_name }} {{ user.last_name }}</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pos">
+<ng-template #loadingUsers>
+    <div class="typing-indicator">
+        <div class="typing-circle"></div>
+        <div class="typing-circle"></div>
+        <div class="typing-circle"></div>
+        <div class="typing-shadow"></div>
+        <div class="typing-shadow"></div>
+        <div class="typing-shadow"></div>
+    </div>
+</ng-template>
+</div>

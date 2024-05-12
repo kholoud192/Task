@@ -1,0 +1,17 @@
+<div *ngIf="userDetails; else loading" class="user-details" >
+    <img [src]="userDetails.avatar" alt="User Avatar">
+    <div class="info">
+        <p><i class="fa-regular fa-user"></i> {{ userDetails.first_name }} {{ userDetails.last_name }}</p>
+        <hr>
+        <p><i class="fa-regular fa-envelope"></i> {{ userDetails.email }}</p>
+        <button (click)="navigateBack()" class="btn_home"><i class="fa-solid fa-house"></i> Home</button>
+    </div>
+</div>
+<ng-template #loading><div class="typing-indicator">
+    <div class="typing-circle"></div>
+    <div class="typing-circle"></div>
+    <div class="typing-circle"></div>
+    <div class="typing-shadow"></div>
+    <div class="typing-shadow"></div>
+    <div class="typing-shadow"></div>
+</div></ng-template>
